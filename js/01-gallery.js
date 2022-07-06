@@ -24,7 +24,7 @@ function createMarkupGallery(items) {
 galleryEl.insertAdjacentHTML("beforeend", galleryMarkup);
 
 function OnCliclImage(event) {
-  // event.preventDefault();
+  event.preventDefault();
   if (!event.target.classList.contains("gallery__image")) {
     return;
   }

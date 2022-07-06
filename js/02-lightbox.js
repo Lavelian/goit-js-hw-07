@@ -14,20 +14,9 @@ function createMarkupGallery(items) {
     })
     .join(" ");
 }
-
-console.log(galleryMarkup);
-
 galleryEl.insertAdjacentHTML("beforeend", galleryMarkup);
 
-function createModal(event) {
-  event.preventDefault();
-  if (!event.target.classList.contains("gallery__image")) {
-    return;
-  }
-  const lightbox = new SimpleLightbox(".gallery a", {
-    captionDelay: 250,
-    /* options */
-  });
-}
-
-galleryEl.addEventListener("click", createModal);
+const lightbox = new SimpleLightbox(".gallery a", {
+  captionsData: "alt",
+  captionDelay: 250,
+});
