@@ -29,7 +29,7 @@ function OnCliclImage(event) {
     return;
   }
 
-  let instance = basicLightbox.create(`
+  const instance = basicLightbox.create(`
      <img src="${event.target.dataset.source}" width="800" height="600" alt ="${event.target.alt}" >`);
 
   instance.show();
