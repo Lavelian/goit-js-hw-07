@@ -24,12 +24,12 @@ function createMarkupGallery(items) {
 galleryEl.insertAdjacentHTML("beforeend", galleryMarkup);
 
 function OnCliclImage(event) {
-  event.preventDefault();
+  // event.preventDefault();
   if (!event.target.classList.contains("gallery__image")) {
     return;
   }
 
-  const instance = basicLightbox.create(`
+  let instance = basicLightbox.create(`
      <img src="${event.target.dataset.source}" width="800" height="600" alt ="${event.target.alt}" >`);
 
   instance.show();
