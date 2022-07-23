@@ -28,22 +28,26 @@ function OnCliclImage(event) {
   if (!event.target.classList.contains("gallery__image")) {
     return;
   }
-
-  const instance = basicLightbox.create(`
-     <img src="${event.target.dataset.source}" width="800" height="600" alt ="${event.target.alt}" >`);
-
-  instance.show();
-
-  document.addEventListener(
-    "keydown",
-    (event) => {
-      if (event.code !== "Escape") {
-        return;
-      }
-      instance.close();
-    },
-    { once: true }
+  const instance = basicLightbox.create(
+    `
+     <img src="${event.target.dataset.source}" width="800" height="600" alt ="${event.target.alt}" >`,
+    {
+      onShow: (instance) => {
+        document.addEventListener("keydown", tabEsp);
+      },
+      onClose: (instance) => {
+        document.removeEventListener("keydown", tabEsp);
+      },
+    }
   );
+  function tabEsp(event) {
+    if (event.code !== "Escape") {
+      return;
+    }
+    instance.close();
+  }
+  instance.show();
+  document.addEventListener("keydown", tabEsp);
 }
 
 galleryEl.addEventListener("click", OnCliclImage);
